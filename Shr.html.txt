@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>احذر</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      color: red;
+      font-size: 80px;
+      margin-top: 100px;
+    }
+    p {
+      font-size: 30px;
+      margin-top: 30px;
+    }
+    #countdown {
+      font-size: 60px;
+      margin-top: 40px;
+      color: yellow;
+    }
+    @keyframes shake {
+      0% { transform: translate(1px, 1px); }
+      20% { transform: translate(-1px, -2px); }
+      40% { transform: translate(-3px, 0px); }
+      60% { transform: translate(3px, 2px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(0px, 0px); }
+    }
+    .shake {
+      animation: shake 0.1s infinite;
+    }
+  </style>
+</head>
+<body>
+  <h1>احذر</h1>
+  <p>تم سحب المعلومات بواسطة èx</p>
+  <div id="countdown">9</div>
+
+  <!-- صوت تنبيه -->
+  <audio id="alertSound">
+    <source src="https://www.soundjay.com/button/sounds/beep-07.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- النص الجديد -->
+  <p>إذا كنت تريد حذفها نهائيًا، يمكنك زيارة حساب <a href="https://www.tiktok.com/@hblow" target="_blank" style="color: cyan;">hblow</a> في التيك توك وطلب المساعدة.</p>
+
+  <script>
+    let count = 9;
+    const countdownElement = document.getElementById("countdown");
+    const alertSound = document.getElementById("alertSound");
+
+    const countdown = setInterval(() => {
+      count--;
+      countdownElement.textContent = count;
+      if (count === 0) {
+        clearInterval(countdown);
+        alertSound.play();
+        document.body.classList.add("shake");
+
+        setTimeout(() => {
+          document.body.classList.remove("shake");
+        }, 2000);
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
